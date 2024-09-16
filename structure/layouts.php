@@ -13,13 +13,6 @@
             <body>
             <?php
         }
-        <?php
-        public function body(){
-        ?>
-        <h1>Welcome to this Great Website!</h1>
-        }
-
-        
 
         public function footer(){
             ?>
