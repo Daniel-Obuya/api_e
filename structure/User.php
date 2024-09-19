@@ -1,36 +1,44 @@
 <?php
+require_once 'includes/dbConnection.php';
 class User {
-    private $fullname;
-    private $email;
-    private $role;
-    private $gender;
-    private $dateJoined;
+    private $conn;
+    private $table_name = "users";
 
-    public function __construct($username, $email, $role, $gender, $dateJoined) {
-        $this->username = $username;
-        $this->email = $email;
-        $this->role = $role;
-        $this->gender = $gender;
-        $this->dateJoined = $dateJoined;
+    public $id;
+    public $fullname;
+    public $username;
+    public $password;
+    public $email;
+    public $gender;
+    public $role;
+    public $created_at;
+
+    public function __construct() {
+        $database = new dbConnection();
+        $this->conn = $database->connect();
     }
-    public function getUsername() {
-        return $this->username;
+    public function create() {
+        $query = "INSERT INTO " . $this->table_name . " (fullname,email,password,username,gender,role) VALUES (:fullname, :email, :password, :username, :gender, :role)";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(":fullname", $this->fullname);
+        $stmt->bindParam(":email", $this->email);
+        $stmt->bindParam(":password", $this->password);
+        $stmt->bindParam(":username", $this->username);
+        $stmt->bindParam(":gender", $this->gender);
+        $stmt->bindParam(":role", $this->role);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
+    public function readAll() {
+        $query = "SELECT * FROM " . $this->table_name;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
     }
 
-    public function getEmail() {
-        return $this->email;
-    }
-
-    public function getRole() {
-        return $this->role;
-    }
-
-    public function getGender() {
-        return $this->gender;
-    }
-
-    public function getDateJoined() {
-        return $this->dateJoined;
-    }
 }
 ?>
