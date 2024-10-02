@@ -27,7 +27,7 @@ $user->gender = $gender;
 $user->role = $role;
 
 if ($user->create()) {
-    echo "User registered succesfully! <a href='view_user.php?";
+    echo "User registered succesfully! <a href='view_user.php?id=" . $user->id . " '>View User Details</a>";
 } else {
     echo "Failed to register user .";
 }
