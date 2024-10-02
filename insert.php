@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 <?php
 require_once 'structure/User.php';
 if ($_SERVER["REQUEST_METHOD"] ==  "POST") {
@@ -10,7 +18,7 @@ $role = htmlspecialchars($_POST['role']);
 
 if (!empty($fullname) && !empty($email)  && !empty($password)  && !empty($username)  && !empty($gender) && !empty($role)) {
 $user = new User();
-
+if(!filter_var($email_address, FILTER_VALIDATE))
 $user->fullname = $fullname;
 $user->email = $email;
 $user->password = password_hash($password, PASSWORD_BCRYPT);
@@ -19,7 +27,7 @@ $user->gender = $gender;
 $user->role = $role;
 
 if ($user->create()) {
-    echo "User registered succesfully!";
+    echo "User registered succesfully! <a href='view_user.php?";
 } else {
     echo "Failed to register user .";
 }
@@ -31,3 +39,6 @@ if ($user->create()) {
 
 
 ?>
+</body>
+</html>
+
