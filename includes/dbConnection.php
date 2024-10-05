@@ -17,23 +17,28 @@ class dbConnection{
         }
         return $this->conn; 
     }
-    public function getUserById($user_id) {
+    public function getAllUsers() {
         $query = 'SELECT * FROM users';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
 
         $user = $stmt->fetchAll(PDO::FETCH_ASSOC);// Fetch all users
 
-        if ($row) {
+        if ($user) {
+            $userList = [];
+            foreach ($users as $row) {
             $user = new User();
             $user->setFullName($row['fullname']);
             $user->setEmail($row['email']);
             $user->setUsername($row['username']);
             $user->setGender($row['gender']);
             $user->setRole($row['role']);
-            return $user;
-        } else {
-            return null; // user not found
+            $userList[] =$user; 
+        } 
+        return $userList;
+        
+     } else {
+            return []; // No users found
         }
     }
     }
