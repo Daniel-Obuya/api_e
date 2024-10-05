@@ -18,9 +18,9 @@ class dbConnection{
         return $this->conn; 
     }
     public function getUserById($user_id) {
-        $query = 'SELECT * FROM users WHERE id = :id';
+        $query = 'SELECT * FROM users WHERE userId = :userId';
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $user_id);
+        $stmt->bindParam(':userId', $user_id);
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -34,7 +34,7 @@ class dbConnection{
             $user->setRole($row['role']);
             return $user;
         } else {
-            return null; 
+            return null; // user not found
         }
     }
     }
