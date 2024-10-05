@@ -9,7 +9,7 @@ $database = new dbConnection();
 $db = $database->connect();
 
 
-$user = $database->getAllUsers();
+$users = $database->getAllUsers();
 
 if (!empty($users)) {
 ?>
@@ -25,6 +25,7 @@ if (!empty($users)) {
 <h2>Registered Users</h2>
 <table border="1">
   <tr>
+    <th>#</th>
     <th>Full Name</th>
     <th>Email</th>
     <th>Username</th>
