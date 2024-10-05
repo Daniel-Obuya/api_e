@@ -3,7 +3,6 @@ include_once 'includes/dbConnection.php';
 include_once 'structure/User.php';
 
 
-$user_id = $_GET['id'];
 
 
 $database = new dbConnection();
