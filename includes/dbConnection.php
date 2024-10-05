@@ -21,7 +21,7 @@ class dbConnection{
         $query = 'SELECT * FROM users';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-
+if ($stmt->execute()) {
         $user = $stmt->fetchAll(PDO::FETCH_ASSOC);// Fetch all users
 
         if ($users) {
@@ -40,5 +40,10 @@ class dbConnection{
      } else {
             return []; // No users found
         }
+    } else {
+        // Query failed
+        echo "Error executing query";
+        return null;
     }
-    }
+}
+}

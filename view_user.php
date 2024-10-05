@@ -11,7 +11,7 @@ $db = $database->connect();
 
 $user = $database->getAllUsers();
 
-if ($user) {
+if (!empty($users)) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
