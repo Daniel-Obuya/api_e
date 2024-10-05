@@ -22,7 +22,7 @@ class dbConnection{
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
 if ($stmt->execute()) {
-        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);// Fetch all users
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);// Fetch all users
 
         if ($users) {
             $userList = [];
