@@ -34,7 +34,9 @@ if ($user) {
 
 <?php
 $count = 1;
-
+foreach ($users as $user){
+    
+}
 ?>
 
 </body>
