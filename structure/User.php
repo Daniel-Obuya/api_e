@@ -13,10 +13,7 @@ class User {
     public $role;
     public $created_at;
 
-    public function __construct() {
-        $database = new dbConnection();
-        $this->conn = $database->connect();
-    }
+  
     public function create() {
         $query = "INSERT INTO " . $this->table_name . " (fullname,email,password,username,gender,role) VALUES (:fullname, :email, :password, :username, :gender, :role)";
         $stmt = $this->conn->prepare($query);
