@@ -17,4 +17,7 @@ class dbConnection{
         }
         return $this->conn; 
     }
+    public function getUserById($user_id) {
+        
+    }
 }

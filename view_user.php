@@ -7,7 +7,7 @@ $user_id = $_GET['id'];
 
 
 $database = new dbConnection();
-$db = $database->getConnection();
+$db = $database->connect();
 
 
 $user = $database->getUserById($user_id);
