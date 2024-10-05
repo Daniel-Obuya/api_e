@@ -18,7 +18,7 @@ $role = htmlspecialchars($_POST['role']);
 
 if (!empty($fullname) && !empty($email)  && !empty($password)  && !empty($username)  && !empty($gender) && !empty($role)) {
 $user = new User();
-if(!filter_var($email_address, FILTER_VALIDATE))
+
 $user->fullname = $fullname;
 $user->email = $email;
 $user->password = password_hash($password, PASSWORD_BCRYPT);

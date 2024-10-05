@@ -1,12 +1,12 @@
 <?php
 include_once 'includes/dbConnection.php';
-include_once 'User.php';
+include_once 'structure/User.php';
 
 
 $user_id = $_GET['id'];
 
 
-$database = new Database();
+$database = new dbConnection();
 $db = $database->getConnection();
 
 
