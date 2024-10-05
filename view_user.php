@@ -35,10 +35,19 @@ if ($user) {
 <?php
 $count = 1;
 foreach ($users as $user){
-    
+    ?>
+    <tr>
+        <td><?php echo $count++; ?></td>
+        <td><?php echo htmlspecialchars($user->getFullName()); ?></td>
+        <td><?php echo htmlspecialchars($user->getEmail()); ?></td>
+        <td><?php echo htmlspecialchars($user->getUsername()); ?></td>
+        <td><?php echo htmlspecialchars($user->getGender()); ?></td>
+        <td><?php echo htmlspecialchars($user->getRole()); ?></td>
+    </tr>
+<?php
 }
 ?>
-
+</table>
 </body>
 </html>
 

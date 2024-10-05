@@ -24,7 +24,7 @@ class dbConnection{
 
         $user = $stmt->fetchAll(PDO::FETCH_ASSOC);// Fetch all users
 
-        if ($user) {
+        if ($users) {
             $userList = [];
             foreach ($users as $row) {
             $user = new User();
