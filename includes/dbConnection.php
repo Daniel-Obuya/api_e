@@ -18,6 +18,23 @@ class dbConnection{
         return $this->conn; 
     }
     public function getUserById($user_id) {
-        
+        $query = 'SELECT * FROM users WHERE id = :id';
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $user_id);
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($row) {
+            $user = new User();
+            $user->setFullName($row['fullname']);
+            $user->setEmail($row['email']);
+            $user->setUsername($row['username']);
+            $user->setGender($row['gender']);
+            $user->setRole($row['role']);
+            return $user;
+        } else {
+            return null; 
+        }
     }
-}
+    }
