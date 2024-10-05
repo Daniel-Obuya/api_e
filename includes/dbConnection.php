@@ -18,12 +18,11 @@ class dbConnection{
         return $this->conn; 
     }
     public function getUserById($user_id) {
-        $query = 'SELECT * FROM users WHERE userId = :userId';
+        $query = 'SELECT * FROM users';
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':userId', $user_id);
         $stmt->execute();
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);// Fetch all users
 
         if ($row) {
             $user = new User();
