@@ -13,7 +13,55 @@ class User {
     public $role;
     public $created_at;
 
-  
+    public function setFullName($fullname) {
+        $this->fullname = $fullname;
+    }
+
+    // Getter for Full Name
+    public function getFullName() {
+        return $this->fullname;
+    }
+
+    // Setter for Email
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    // Getter for Email
+    public function getEmail() {
+        return $this->email;
+    }
+
+    // Setter for Username
+    public function setUsername($username) {
+        $this->username = $username;
+    }
+
+    // Getter for Username
+    public function getUsername() {
+        return $this->username;
+    }
+
+    // Setter for Gender
+    public function setGender($gender) {
+        $this->gender = $gender;
+    }
+
+    // Getter for Gender
+    public function getGender() {
+        return $this->gender;
+    }
+
+    // Setter for Role
+    public function setRole($role) {
+        $this->role = $role;
+    }
+
+    // Getter for Role
+    public function getRole() {
+        return $this->role;
+    }
+
     public function create() {
         $query = "INSERT INTO " . $this->table_name . " (fullname,email,password,username,gender,role) VALUES (:fullname, :email, :password, :username, :gender, :role)";
         $stmt = $this->conn->prepare($query);
