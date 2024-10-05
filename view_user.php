@@ -10,7 +10,7 @@ $database = new dbConnection();
 $db = $database->connect();
 
 
-$user = $database->getUserById($user_id);
+$user = $database->getAllUsers();
 
 if ($user) {
 ?>
