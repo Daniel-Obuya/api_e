@@ -7,5 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 
 class SendMail{
     public function SendMail($mailMsg){
+         //Load Composer's autoloader
+    require 'plugins/PHPMailer/vendor/autoload.php';
     }
 }
