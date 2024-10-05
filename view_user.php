@@ -24,7 +24,18 @@ if ($user) {
 
 <h2>Registered Users</h2>
 <table border="1">
-  
+  <tr>
+    <th>Full Name</th>
+    <th>Email</th>
+    <th>Username</th>
+    <th>Gender</th>
+    <th>Role</th>
+</tr>
+
+<?php
+$count = 1;
+
+?>
 
 </body>
 </html>
