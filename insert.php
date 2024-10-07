@@ -16,6 +16,9 @@ $username = htmlspecialchars($_POST['username']);
 $gender = htmlspecialchars($_POST['gender']);
 $role = htmlspecialchars($_POST['role']);
 
+// Generate verfication code
+$verification_code = rand(100000, 999999); // 6-digit random code
+
 if (!empty($fullname) && !empty($email)  && !empty($password)  && !empty($username)  && !empty($gender) && !empty($role)) {
 $user = new User();
 
@@ -27,9 +30,10 @@ $user->gender = $gender;
 $user->role = $role;
 
 if ($user->create()) {
-    echo "User registered succesfully          ! <a href='view_user.php?id=" . $user->id . " '>View User Details</a>";
+    sendVerificationEmail($email, $verfication_code);
+    echo 'Registration Succesfull! Check your email for the verification code. <a href="verifyform.php">Verify your account here</a>';
 } else {
-    echo "Failed to register user .";
+    echo "Registration failed .";
 }
 } else {
     echo "Please fill in all fields.";
